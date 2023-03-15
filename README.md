@@ -20,12 +20,12 @@ Web browser is preferred because it’s much easier to input and track your task
 | Timing   | Text        |
 
 #### Operations: 
-Create a reminder that contains: The date and time of the reminder, the priority of it, how often it would be repeated (daily, weekly, monthly)
-Toggle on/off the reminder
-Change the date and time of the reminder
-Change the priority
-Change the amount of times it is repeated
-Change the title/description of the reminder
-Delete the reminder
+- Create a reminder that contains: The date and time of the reminder, the priority of it, how often it would be repeated (daily, weekly, monthly)
+- Toggle on/off the reminder
+- Change the date and time of the reminder
+- Change the priority
+- Change the amount of times it is repeated
+- Change the title/description of the reminder
+- Delete the reminder
 
 #### Reference:
