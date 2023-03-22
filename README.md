@@ -20,10 +20,10 @@ Web browser is preferred because it’s much easier to input and track your task
 
 | UML Diagram   | Summary Description|
 | ------------- | ------------- |
-| Class         | Text        |
+| [Class](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Class.png)         | Text        |
 | State         | Text        |
-|[Use Case](diagrams\Use_Case.png)   | Text        |
-| Timing        | Text        |
+|[Use Case](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Use_Case.png)   | Text        |
+| [Sequence](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | Text        |
 
 
 #### Operations: 
