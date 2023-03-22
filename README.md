@@ -23,7 +23,7 @@ Web browser is preferred because it’s much easier to input and track your task
 | [Class Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Class.png)         | The Class Diagram shows all of the information that the code will be using. It includes classes, variables, methods, and the relationships between all of them.        |
 | State Diagram         | Text        |
 |[Use Case Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Use_Case.png)   | Text        |
-| [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | The Sequence Diagram shows how the different classes interact with each other and the order it would happen depending on what is run.        |
+| [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | The Sequence Diagram shows how the different classes interact with each other and show what happens in those scenarios.        |
 
 
 #### Operations: 
