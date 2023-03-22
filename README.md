@@ -20,9 +20,9 @@ Web browser is preferred because it’s much easier to input and track your task
 
 | UML Diagram   | Summary Description|
 | ------------- | ------------- |
-| [Class Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Class.png)         | The Class Diagram shows all of the information that the code will be using. It includes classes, variables, methods, and the relationships between all of them.        |
-| State Diagram         | Text        |
-|[Use Case Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Use_Case.png)   | Text        |
+| [Class Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Class.png)              | The Class Diagram shows all of the information that the code will be using. It includes classes, variables, methods, and the relationships between all of them.    |
+| [State Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/State.png)              | The State Diagram displays the conditions, events, and actions Task Reminder would have. It shows when a program is running and what happens when the program is not running. It also shows what happens when an error occurs. Shows when you enter the Task Reminder Interface's start and end.                                  |
+| [Use Case Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Use_Case.png)        | The Use Case Diagram displays the various interactions the user may encounter with Task Reminder. The main interactions are Homepage, User Functions, Edit Reminders, Exit, and Registration Page. Each of ther main interactions have sub-interactions such as Homepage having a Login and Register function.                 |
 | [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | The Sequence Diagram shows how the different classes interact with each other and show what happens in those scenarios.        |
 
 
