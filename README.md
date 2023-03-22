@@ -18,6 +18,14 @@ Our project will create a reminder for the user on the specific time and date th
 #### Functionality:
 Web browser is preferred because it’s much easier to input and track your task reminders on a browser rather than running an application. Task reminders are meant to make your life easier, having it on the web allows the user to start using our project much faster than it would be to download an application. When it's time for a reminder to go off, it will send a text message to your phone. Depending on the priority, it can send a text at the start of the morning, few hours before, or a few minutes before.
 
+| UML Diagram   | Summary Description|
+| ------------- | ------------- |
+| Class         | Text        |
+| State         | Text        |
+|[Use Case](diagrams\Use_Case.png)   | Text        |
+| Timing        | Text        |
+
+
 #### Operations: 
 - Ask for carrier of phone number
 - Add phone number to receive text reminders
