@@ -1,4 +1,4 @@
-package taskReminder;
+package src;
 
 public class AppController {
 
