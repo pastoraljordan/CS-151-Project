@@ -39,12 +39,15 @@ public class GmailTest {
 	// Using school email for testing, will use new email separate from school for actual sending
 	private static final String testEmail = "alonzojordan.pastoral@sjsu.edu";
 	private static final String testNum = "9253237905@txt.att.net";
-	private static final String testNum2 = "3852610378@vtext.com";
 	
 	
 	private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT, GsonFactory jsonFactory)
 		      throws IOException {
 		    // Load client secrets.
+		
+			//*****************************************************************************
+			//*MAKE SURE TO CREATE NEW SECRET IN GOOGLE CLOUD, DOWNLOAD JSON FILE, AND MOVE INTO RESOURCES*
+			//*****************************************************************************
 		    GoogleClientSecrets clientSecrets =
 		        GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GmailTest.class.getResourceAsStream("/testClientSecrets.json")));
 
@@ -59,7 +62,7 @@ public class GmailTest {
 		    return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 		  }
 	
-	private void sendMessage(String subject, String msg) throws Exception {
+	public static void sendMessage(String subject, String msg) throws Exception {
 		
 		 final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
 		 GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -73,7 +76,7 @@ public class GmailTest {
 		    MimeMessage email = new MimeMessage(session);
 		    email.setFrom(new InternetAddress(testEmail));
 		    email.addRecipient(javax.mail.Message.RecipientType.TO,
-		        new InternetAddress(testNum2));
+		        new InternetAddress(testEmail));
 		    email.setSubject(subject);
 		    email.setText(msg);
 
@@ -102,7 +105,6 @@ public class GmailTest {
 	}
 	
 	public static void main(String[] args) throws Exception{
-		new GmailTest().sendMessage("Project Testing :P", "Hi Anna!!\n"
-				+ "I'm Testing to see if my project is working correctly!");
+		new GmailTest().sendMessage("Project Testing :P", "This is a message that I sent");
 	}
 }

@@ -5,12 +5,12 @@ import java.util.List;
 
 public class User {
 	
-	private int number;
+	private String number;
 	private Carrier carrier;
 	private String password;
 	private List<Reminder> reminders;
 	
-	public User(int number, Carrier carrier, String password) {
+	public User(String number, Carrier carrier, String password) {
 		this.number = number;
 		this.carrier = carrier;
 		this.password = password;
@@ -19,13 +19,29 @@ public class User {
 	
 	public void forgotPassword() {
 		
+		// Can send message to phone number or email to get old password, or can set new password
+		/*if(phone number choice) {
+		 * 	send text message with old password
+		 * }
+		 * else if(email choice) {
+		 * 	send email with old password
+		 * }
+		 * else
+		 * ask to enter a new password and set that as new password
+		 */
+		
+		
+	}
+	
+	public void addReminder(Reminder reminder) {
+		reminders.add(reminder);
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
