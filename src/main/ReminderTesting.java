@@ -22,5 +22,4 @@ public class ReminderTesting {
 		
 		jordan.addReminder(remind);
 	}
-
 }
