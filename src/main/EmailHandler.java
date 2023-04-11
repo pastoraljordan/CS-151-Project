@@ -1,46 +1,47 @@
 package main;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.time.LocalDateTime;
 
-public class EmailHandler extends TimerTask {
+public class EmailHandler {
 
 	private Timer timer;
-	private String textMessage;
 	private Reminder reminder;
-	
-	//Since the GmailTest works, may just refactor and use its methods
-	
-	public void createMessage(Reminder reminder) {
-		
+	private TimerTask task;
+
+	public EmailHandler(Reminder reminder) {
+		this.reminder = reminder;
 		timer = new Timer();
+		task = new TimerTask() {
+
+			@Override
+			public void run() {
+				try {
+					// GmailTest.sendMessage(reminder.getName(), reminder.getDescription());
+					System.out.println("Test Run");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			};
+		};
+
+		Calendar date = reminder.getDate();
 		Repetition repeat = reminder.getRepetition();
-		
 		switch (repeat) {
 		case hourly:
+			timer.scheduleAtFixedRate(task, date.getTime(), 3600000);
 			break;
 		case daily:
+			timer.scheduleAtFixedRate(task, date.getTime(), 86400000);
 			break;
 		case weekly:
+			timer.scheduleAtFixedRate(task, date.getTime(), 604800000);
 			break;
+		default:
+			timer.schedule(task, date.getTime());
 		}
-		
 	}
-
-	public void run(Reminder reminder) {
-		try {
-			GmailTest.sendMessage(reminder.getName(), textMessage);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
+	// Since the GmailTest works, may just refactor and use its methods
 }

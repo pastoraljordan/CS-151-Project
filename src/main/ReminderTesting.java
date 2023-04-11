@@ -21,5 +21,8 @@ public class ReminderTesting {
 		Reminder remind = new Reminder("Test", "for testing purposes", today, Priority.low, Repetition.hourly);
 		
 		jordan.addReminder(remind);
+		
+		EmailHandler handler = new EmailHandler(remind);
+		
 	}
 }

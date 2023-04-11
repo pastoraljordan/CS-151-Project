@@ -45,10 +45,11 @@ public class GmailTest {
 		      throws IOException {
 		    // Load client secrets.
 		
-			//*****************************************************************************
+			//*********************************************************************************************
 			//*MAKE SURE TO CREATE NEW SECRET IN GOOGLE CLOUD, DOWNLOAD JSON FILE, AND MOVE INTO RESOURCES*
-			//*****************************************************************************
+			//*********************************************************************************************
 		    GoogleClientSecrets clientSecrets =
+		    		// Copy paste filepath for the json file of the secrets
 		        GoogleClientSecrets.load(jsonFactory, new InputStreamReader(GmailTest.class.getResourceAsStream("/testClientSecrets.json")));
 
 		    // Build flow and trigger user authorization request.
