@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Date;
+import java.util.Calendar;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -7,19 +9,19 @@ public class Reminder {
 	
 	private String name;
 	private String description;
-	private LocalDateTime date;
+	private Calendar date;
 	private boolean use;
 	private Priority priority;
 	private Repetition repetition;
 	
 	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd, yyyy: HH:mm");
 	
-	public Reminder(String name, String description, LocalDateTime date, boolean use,
+	public Reminder(String name, String description, Calendar date,
 			Priority priority, Repetition repetition) {
 		this.name = name;
 		this.description = description;
 		this.date = date;
-		this.use = use;
+		this.use = true;
 		this.priority = priority;
 		this.repetition = repetition;
 	}
@@ -40,11 +42,11 @@ public class Reminder {
 		this.description = description;
 	}
 
-	public LocalDateTime getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
@@ -71,7 +73,5 @@ public class Reminder {
 	public void setRepetition(Repetition repetition) {
 		this.repetition = repetition;
 	}
-	
-	
 	
 }
