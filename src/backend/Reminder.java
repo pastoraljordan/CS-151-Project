@@ -1,25 +1,23 @@
 package backend;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
 public class Reminder {
 	
 	private String name;
 	private String description;
-	private LocalDateTime date;
-	private boolean use;
+	private Calendar date;
 	private Priority priority;
 	private Repetition repetition;
 	
 	DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd, yyyy: HH:mm");
 	
-	public Reminder(String name, String description, LocalDateTime date, boolean use,
+	public Reminder(String name, String description, Calendar date,
 			Priority priority, Repetition repetition) {
 		this.name = name;
 		this.description = description;
 		this.date = date;
-		this.use = use;
 		this.priority = priority;
 		this.repetition = repetition;
 	}
@@ -40,20 +38,12 @@ public class Reminder {
 		this.description = description;
 	}
 
-	public LocalDateTime getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(Calendar date) {
 		this.date = date;
-	}
-
-	public boolean isUse() {
-		return use;
-	}
-
-	public void setUse(boolean use) {
-		this.use = use;
 	}
 
 	public Priority getPriority() {
