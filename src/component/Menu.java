@@ -26,7 +26,7 @@ public class Menu extends javax.swing.JPanel {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelMoving = new javax.swing.JPanel();
@@ -71,7 +71,7 @@ public class Menu extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listMenu1, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE))
         );
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
     @Override
     protected void paintChildren(Graphics g) {
@@ -104,9 +104,9 @@ public class Menu extends javax.swing.JPanel {
         });
         
     }
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private swing.ListMenu<String> listMenu1;
     private javax.swing.JPanel panelMoving;
-    // End of variables declaration                   
+    // End of variables declaration//GEN-END:variables
 }
