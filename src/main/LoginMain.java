@@ -3,12 +3,9 @@ package main;
 import swing.EventLogin;
 
 public class LoginMain extends javax.swing.JFrame {
-
-    private Main home;
     
     public LoginMain() {
         initComponents();
-        home = new Main();
         EventLogin event = new EventLogin() {
             @Override
             public void loginDone() {
@@ -16,7 +13,7 @@ public class LoginMain extends javax.swing.JFrame {
                 main.add(home);
                 main.revalidate();
                 main.repaint();*/
-                dispose();
+                setVisible(false);
                 Main dashboard = new Main();
                 dashboard.setVisible(true);
             }
