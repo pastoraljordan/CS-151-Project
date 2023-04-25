@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class DBConnection {
 	
@@ -198,7 +201,7 @@ public class DBConnection {
 		return null;
 	}
 	
-	public static Reminder getReminder(String username, String name) {
+	public static Reminder getReminder(String username, String name) throws ParseException {
 		clearConnections();
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -208,7 +211,11 @@ public class DBConnection {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(select);
 			if(rs.next()) {
-				Reminder reminder = new Reminder();
+				Calendar date = Calendar.getInstance();
+				SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy HH:mm:ss");
+				date.setTime(sdf.parse(rs.getString("date")));
+				Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
+						rs.getString("description"), date, Repetition.valueOf(rs.getString("repetition")));
 				rs.close();
 				stmt.close();
 				con.close();
