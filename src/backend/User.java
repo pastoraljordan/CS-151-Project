@@ -5,16 +5,16 @@ import java.util.List;
 
 public class User {
 	
+	private String name;
 	private String email;
 	private String username;
-	private String number;
-	private Carrier carrier;
 	private String password;
 	private List<Reminder> reminders;
 	
-	public User(String number, Carrier carrier, String password) {
-		this.number = number;
-		this.carrier = carrier;
+	public User(String name, String email, String username, String password) {
+		this.name = name;
+		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.reminders = new ArrayList<>();
 	}
@@ -52,6 +52,14 @@ public class User {
 		
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -70,22 +78,6 @@ public class User {
 	
 	public void addReminder(Reminder reminder) {
 		reminders.add(reminder);
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
-	}
-
-	public Carrier getCarrier() {
-		return carrier;
-	}
-
-	public void setCarrier(Carrier carrier) {
-		this.carrier = carrier;
 	}
 
 	public String getPassword() {
