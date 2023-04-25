@@ -143,7 +143,7 @@ public class DBConnection {
 		return false;
 	}
 	
-	private static void printAll() {
+	/*private static void printAll() {
 		clearConnections();
 		try {
 			Class.forName("org.sqlite.JDBC");
@@ -167,7 +167,7 @@ public class DBConnection {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public static User getUser(String username) {
 		clearConnections();
