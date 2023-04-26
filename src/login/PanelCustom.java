@@ -22,13 +22,13 @@ public class PanelCustom extends JComponent {
         g2.dispose();
         super.paintComponent(g);
     }
-
+    
     private float alpha;
-
+    
     public float getAlpha() {
         return alpha;
     }
-
+    
     public void setAlpha(float alpha) {
         this.alpha = alpha;
     }

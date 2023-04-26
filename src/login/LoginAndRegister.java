@@ -19,17 +19,12 @@ public class LoginAndRegister extends javax.swing.JPanel {
     private Login login;
     private Animator animator;
     private boolean isLogin;
+
     public static Color mainColor = new Color(105, 105, 105);
 
-    public LoginAndRegister() {
-        initComponents();
-        init();
-        initAnimator();
-    }
-    
     public void setAnimate(int animate) {
-        layout.setComponentConstraints(register, "pos (50%)-290px-"+animate+" 0.5al n n");
-        layout.setComponentConstraints(login, "pos (50%)-10px+"+animate+" 0.5al n n");
+        layout.setComponentConstraints(register, "pos (50%)-290px-" + animate + " 0.5al n n");
+        layout.setComponentConstraints(login, "pos (50%)-10px+" + animate + " 0.5al n n");
         if(animate == 30) {
             if(isLogin) {
                 setComponentZOrder(login, 0);
@@ -38,6 +33,12 @@ public class LoginAndRegister extends javax.swing.JPanel {
             }
         }
         revalidate();
+    }
+
+    public LoginAndRegister() {
+        initComponents();
+        init();
+        initAnimator();
     }
 
     private void initAnimator() {
@@ -52,10 +53,12 @@ public class LoginAndRegister extends javax.swing.JPanel {
                     login.setAlpha(fraction);
                 }
             }
+
         });
         animator.addTarget(new PropertySetter(this, "animate", 0, 30, 0));
         animator.setResolution(0);
     }
+
     private void init() {
         setBackground(mainColor);
         layout = new MigLayout("fill", "fill", "fill");
@@ -69,7 +72,7 @@ public class LoginAndRegister extends javax.swing.JPanel {
         register.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(SwingUtilities.isLeftMouseButton(e)) {
+                if (SwingUtilities.isLeftMouseButton(e)) {
                     showLogin(false);
                 }
             }
@@ -81,19 +84,20 @@ public class LoginAndRegister extends javax.swing.JPanel {
                     showLogin(true);
                 }
             }
+            
         });
     }
     
     public void showLogin(boolean show) {
-        if(show != isLogin) {
-            if(!animator.isRunning()) {
+        if (show != isLogin) {
+            if (!animator.isRunning()) {
                 isLogin = show;
                 animator.start();
             }
         }
     }
     
-    private void applyEvent(JComponent panel, boolean login) {
+     private void applyEvent(JComponent panel, boolean login) {
         for(Component com : panel.getComponents()) {
             com.addMouseListener(new MouseAdapter() {
                 @Override
@@ -103,28 +107,28 @@ public class LoginAndRegister extends javax.swing.JPanel {
             });
         }
     }
-    
-    public void setEventLogin(EventLogin event) {
-        login.setEventLogin(event);
-    }
+     
+     public void setEventLogin(EventLogin event) {
+         login.setEventLogin(event);
+     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 709, Short.MAX_VALUE)
+            .addGap(0, 756, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGap(0, 418, Short.MAX_VALUE)
         );
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
 
-    // Variables declaration - do not modify                     
-    // End of variables declaration                   
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // End of variables declaration//GEN-END:variables
 }
