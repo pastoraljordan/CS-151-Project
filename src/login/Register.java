@@ -1,5 +1,8 @@
 package login;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 public class Register extends PanelCustom {
 
     public Register() {
@@ -44,6 +47,17 @@ public class Register extends PanelCustom {
         loginButton1.setForeground(new java.awt.Color(255, 255, 255));
         loginButton1.setText("Sign Up");
         loginButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        loginButton1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					if(validPassword(loginPassword1.getPassword())) {
+						
+					}
+				
+			}
+        	
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,7 +91,27 @@ public class Register extends PanelCustom {
                 .addComponent(loginButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
         );
-    }// </editor-fold>                        
+    }// </editor-fold>  
+    
+    private boolean validPassword(char[] ch) {
+    	boolean upper = false;
+    	boolean lower = false;
+    	boolean special = false;
+    	boolean number = false;
+    	boolean length = (ch.length >= 8);
+    	String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.";
+    	for(int i = 0; i < ch.length; i++) {
+    		if(Character.isUpperCase(ch[i]))
+    			upper = true;
+    		if(Character.isLowerCase(ch[i]))
+    			lower = true;
+    		if(Character.isDigit(ch[i]))
+    			number = true;
+    		if(specialChars.indexOf(ch[i]) > -1)
+    			special = true;
+    	}
+    	return (upper && lower && special && number && length);
+    }
 
 
     // Variables declaration - do not modify                     
