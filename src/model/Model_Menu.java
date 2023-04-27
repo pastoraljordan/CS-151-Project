@@ -54,17 +54,25 @@ public class Model_Menu {
     }
 
     public Model_Menu() {
-
     }
-
+    
+    
+    
     private String icon;
     private String name;
+    
     private MenuType type;
     
     public Icon toIcon() {
-        return new ImageIcon(getClass().getResource("/icons/" + icon + ".png"));
+        return new ImageIcon("/icons/" + icon + ".png");
     }
+    
+    public Icon toIconSelected() {
+        return new ImageIcon("/icons/" + icon + ".png");
+    }
+    
     public static enum MenuType {
-        TITLE, MENU, EMPTY
+        MENU, EMPTY
     }
+
 }

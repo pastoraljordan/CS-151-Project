@@ -24,8 +24,8 @@ public class LoginMain extends javax.swing.JFrame {
                 main.revalidate();
                 main.repaint();
             }
-
         };
+        loginAndRegister1.setEventLogin(event);
     }
 
     /**
