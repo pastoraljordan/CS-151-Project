@@ -10,6 +10,7 @@ public class LoginMain extends javax.swing.JFrame {
             @Override
             public void loginDone() {
                 main.removeAll();
+                main.setVisible(false);
                 // main.add(whatever the dashboard's name is (make sure its a JPanel)
                 // if its not a JPanel and a JFrame, just do main.setVisible(false)
                 // and create a new Dashboard item with dashboard = new Dashboard();
