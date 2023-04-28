@@ -1,21 +1,54 @@
 package swing;
 
+import event.EventMenuCallBack;
+import event.EventMenuSelected;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.ListModel;
+import javax.swing.SwingUtilities;
 import model.Model_Menu;
 
 public class DashboardListMenu<E extends Object> extends JList<E> {
 
     private final DefaultListModel model;
+    private final List<EventMenuSelected> events;
     private int selectedIndex = -1;
     
     public DashboardListMenu() {
         model = new DefaultListModel();
+        events = new ArrayList<>();
         super.setModel(model);
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+               if(SwingUtilities.isLeftMouseButton(e)) {
+                   int index = locationToIndex(e.getPoint());
+                   Object obj = model.getElementAt(index);
+                   if(obj instanceof Model_Menu) {
+                       Model_Menu data = (Model_Menu) obj;
+                       if(data.getType() == Model_Menu.MenuType.MENU) {
+                           if(index != selectedIndex) {
+                               selectedIndex = -1;
+                               runEvent(index);
+                           }
+                       }
+                   } else {
+                       if(index != selectedIndex) {
+                           selectedIndex = -1;
+                           runEvent(index);
+                       }
+                   }
+               }
+            }
+            
+        });
     }
 
     @Override
@@ -35,6 +68,18 @@ public class DashboardListMenu<E extends Object> extends JList<E> {
             }
         };
     }
+    
+    private void runEvent(int indexChange) {
+        for(EventMenuSelected event : events) {
+            event.menuSelected(indexChange, new EventMenuCallBack() {
+                @Override
+                public void call(int index) {
+                    selectedIndex = index;
+                    repaint();
+                }
+            });
+        }
+    }
 
     @Override
     public void setModel(ListModel<E> lm) {
@@ -52,4 +97,7 @@ public class DashboardListMenu<E extends Object> extends JList<E> {
         this.selectedIndex = index;
     }
     
+    public void addEventSelectedMenu(EventMenuSelected event) {
+        events.add(event);
+    }
 }
