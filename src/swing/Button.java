@@ -8,9 +8,9 @@ import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
-public class LoginButton extends JButton {
+public class Button extends JButton {
 
-    public LoginButton() {
+    public Button() {
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setContentAreaFilled(false);
         setCursor(new Cursor(Cursor.HAND_CURSOR));

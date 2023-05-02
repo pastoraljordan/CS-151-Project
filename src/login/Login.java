@@ -20,9 +20,9 @@ public class Login extends PanelCustom {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        loginTextField1 = new swing.LoginTextField();
-        loginPassword1 = new swing.LoginPassword();
-        loginButton1 = new swing.LoginButton();
+        loginTextField1 = new swing.TextField();
+        loginPassword1 = new swing.Password();
+        loginButton1 = new swing.Button();
 
         setBackground(new java.awt.Color(247, 247, 247));
 
@@ -84,8 +84,8 @@ public class Login extends PanelCustom {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private swing.LoginButton loginButton1;
-    private swing.LoginPassword loginPassword1;
-    private swing.LoginTextField loginTextField1;
+    private swing.Button loginButton1;
+    private swing.Password loginPassword1;
+    private swing.TextField loginTextField1;
     // End of variables declaration//GEN-END:variables
 }

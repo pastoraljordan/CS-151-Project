@@ -68,6 +68,15 @@ public class DashboardMenu extends PanelShadow {
         animator.setDeceleration(0.5f);
     }
     
+    public void setSelectedIndex(int index) {
+        selectedIndex = index;
+        menuTarget = selectedIndex * 50 + dashboardListMenu.getY();
+        menuLastTarget = menuTarget;
+        currentLocation = menuLastTarget;
+        dashboardListMenu.selectedIndex(index);
+        repaint();
+    }
+    
     private void initData() {
         dashboardListMenu.addItem(new Model_Menu("Dashboard", "Dashboard", Model_Menu.MenuType.MENU));
         dashboardListMenu.addItem(new Model_Menu("AllReminders", "All Reminders", Model_Menu.MenuType.MENU));

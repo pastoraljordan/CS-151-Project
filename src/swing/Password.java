@@ -6,11 +6,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import login.LoginAndRegister;
 
-public class LoginTextField extends JTextField {
+public class Password extends JPasswordField {
 
     public String getHint() {
         return hint;
@@ -22,7 +23,7 @@ public class LoginTextField extends JTextField {
 
     private String hint = "";
 
-    public LoginTextField() {
+    public Password() {
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setBackground(new Color(0, 0, 0, 0));
         setHorizontalAlignment(JTextField.CENTER);
@@ -37,7 +38,7 @@ public class LoginTextField extends JTextField {
         int width = getWidth() - 1;
         int height = getHeight() - 1;
         g2.draw(new RoundRectangle2D.Double(0, 0, width, height, height, height));
-        if (!hint.equals("") && getText().length() == 0) {
+        if (!hint.equals("") && getPassword().length == 0) {
             createHintText(g2);
         }
         g2.dispose();

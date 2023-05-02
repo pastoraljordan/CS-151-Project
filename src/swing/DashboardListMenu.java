@@ -93,7 +93,7 @@ public class DashboardListMenu<E extends Object> extends JList<E> {
         model.addElement(data);
     }
     
-    public void setSelectedIndex(int index) {
+    public void selectedIndex(int index) {
         this.selectedIndex = index;
     }
     

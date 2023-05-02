@@ -9,13 +9,14 @@ public class LoginMain extends javax.swing.JFrame {
         EventLogin event = new EventLogin() {
             @Override
             public void loginDone() {
-                main.removeAll();
-                main.setVisible(false);
+                LoginMain.this.dispose();
                 // main.add(whatever the dashboard's name is (make sure its a JPanel)
                 // if its not a JPanel and a JFrame, just do main.setVisible(false)
                 // and create a new Dashboard item with dashboard = new Dashboard();
-                main.revalidate();
-                main.repaint();
+                //main.revalidate();
+                //main.repaint();
+                DashboardMain dashboard = new DashboardMain();
+                dashboard.setVisible(true);
             }
 
             @Override

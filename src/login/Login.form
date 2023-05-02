@@ -62,7 +62,7 @@
         <Property name="text" type="java.lang.String" value="SIGN IN"/>
       </Properties>
     </Component>
-    <Component class="swing.LoginTextField" name="loginTextField1">
+    <Component class="swing.TextField" name="loginTextField1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -70,7 +70,7 @@
         <Property name="hint" type="java.lang.String" value="USER NAME"/>
       </Properties>
     </Component>
-    <Component class="swing.LoginPassword" name="loginPassword1">
+    <Component class="swing.Password" name="loginPassword1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
@@ -78,7 +78,7 @@
         <Property name="hint" type="java.lang.String" value="PASSWORD"/>
       </Properties>
     </Component>
-    <Component class="swing.LoginButton" name="loginButton1">
+    <Component class="swing.Button" name="loginButton1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="8e" red="56" type="rgb"/>

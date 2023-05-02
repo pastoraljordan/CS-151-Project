@@ -11,11 +11,11 @@ public class Register extends PanelCustom {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        loginTextField1 = new swing.LoginTextField();
-        loginButton1 = new swing.LoginButton();
-        loginTextField2 = new swing.LoginTextField();
-        loginTextField3 = new swing.LoginTextField();
-        loginPassword1 = new swing.LoginPassword();
+        loginTextField1 = new swing.TextField();
+        loginButton1 = new swing.Button();
+        loginTextField2 = new swing.TextField();
+        loginTextField3 = new swing.TextField();
+        loginPassword1 = new swing.Password();
 
         setBackground(new java.awt.Color(56, 56, 56));
 
@@ -82,10 +82,10 @@ public class Register extends PanelCustom {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private swing.LoginButton loginButton1;
-    private swing.LoginPassword loginPassword1;
-    private swing.LoginTextField loginTextField1;
-    private swing.LoginTextField loginTextField2;
-    private swing.LoginTextField loginTextField3;
+    private swing.Button loginButton1;
+    private swing.Password loginPassword1;
+    private swing.TextField loginTextField1;
+    private swing.TextField loginTextField2;
+    private swing.TextField loginTextField3;
     // End of variables declaration//GEN-END:variables
 }
