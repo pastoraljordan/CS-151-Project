@@ -1,7 +1,9 @@
 package form;
 
+import backend.CurrentUser;
+import backend.DBConnection;
 import backend.Reminder;
-import backend.Repetition;
+import backend.User;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -171,8 +173,11 @@ public class CreateRemindersForm extends javax.swing.JPanel {
             time.setHint("Select a time");
         }
         if(name != null && description != null && time != null && jDateChooser1.getDate() != null) {
+            CurrentUser current = CurrentUser.currentUser;
+            User user = current.getCurrentUser();
             String date = jDateChooser1.getDateFormatString() + " " + time.getText();
-            Reminder reminder = new Reminder(name.getText(), description.getText(), date, backend.Repetition.daily);
+            Reminder reminder = new Reminder(user.getUsername(), name.getText(), description.getText(), date, backend.Repetition.daily);
+            DBConnection.addReminder(reminder);
         }
     }//GEN-LAST:event_button1ActionPerformed
 

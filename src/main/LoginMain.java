@@ -1,5 +1,7 @@
 package main;
 
+import backend.CurrentUser;
+import backend.User;
 import swing.EventLogin;
 
 public class LoginMain extends javax.swing.JFrame {

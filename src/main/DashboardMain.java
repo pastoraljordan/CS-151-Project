@@ -1,5 +1,6 @@
 package main;
 
+import backend.CurrentUser;
 import event.EventMenu;
 import form.AllRemindersForm;
 import form.CreateRemindersForm;

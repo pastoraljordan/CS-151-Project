@@ -14,7 +14,7 @@ public class SendReminders {
         Message message = Message.creator( 
                 new com.twilio.type.PhoneNumber(number), 
                 new com.twilio.type.PhoneNumber("+18444240538"),  
-                "I love you")      
+                "copy paste text here")      
             .create(); 
  
         System.out.println(message.getSid()); 
