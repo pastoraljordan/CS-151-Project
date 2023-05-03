@@ -1,6 +1,7 @@
 package backend;
 
-import java.time.format.DateTimeFormatter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Reminder {
@@ -8,12 +9,12 @@ public class Reminder {
     private String username;
     private String title;
     private String description;
-    private String date;
+    private Calendar date;
     private Repetition repetition;
 
-    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd, yyyy: HH:mm");
+    DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy: HH:mm");
 
-    public Reminder(String username, String title, String description, String date, Repetition repetition) {
+    public Reminder(String username, String title, String description, Calendar date, Repetition repetition) {
         this.username = username;
         this.title = title;
         this.description = description;
@@ -45,11 +46,11 @@ public class Reminder {
         this.description = description;
     }
 
-    public String getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 

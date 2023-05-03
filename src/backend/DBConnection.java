@@ -65,7 +65,7 @@ public class DBConnection {
             String reminderTable = "CREATE TABLE Reminders ("
                     + "username varchar(255),"
                     + "title varchar(255),"
-                    + "description varchar(255)"
+                    + "description varchar(255),"
                     + "date varchar(255),"
                     + "repetition varchar(255));";
             stmt.execute(reminderTable);
@@ -144,22 +144,67 @@ public class DBConnection {
         }
         return false;
     }
+    
+    public static boolean validAccount(String username) {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String valid = "SELECT * FROM Users WHERE username = '" + username + "';";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(valid);
+            if (rs.next()) {
+                return true;
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public static boolean validAccountNumber(String number) {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String valid = "SELECT * FROM Users WHERE number = '" + number + "';";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(valid);
+            if (rs.next()) {
+                return true;
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            return false;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-    /*private static void printAll() {
+    private static void printAll() {
 		clearConnections();
 		try {
 			Class.forName("org.sqlite.JDBC");
 			con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
-			String print = "SELECT firstname, lastname, email, password, username FROM Users;";
+			String print = "SELECT name, number, username, password FROM Users;";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(print);
 			while(rs.next()) {
-				String first = rs.getString("firstname");
-				String last = rs.getString("lastname");
-				String email = rs.getString("email");
-				String password = rs.getString("password");
+				String name = rs.getString("name");
+				String number = rs.getString("number");
 				String username = rs.getString("username");
-				System.out.println(first + " " + last + " " + email + " " + password + " " + username);
+				String password = rs.getString("password");
+				System.out.println(name + " " + number + " " + username + " " + password);
 			}
 			rs.close();
 			stmt.close();
@@ -169,7 +214,7 @@ public class DBConnection {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
     public static User getUser(String username) {
         clearConnections();
         try {
@@ -209,8 +254,11 @@ public class DBConnection {
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             if (rs.next()) {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy: HH:mm");
+                cal.setTime(sdf.parse(rs.getString("date")));
                 Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
-                        rs.getString("description"), rs.getString("date"), Repetition.valueOf(rs.getString("repetition")));
+                        rs.getString("description"), cal, Repetition.valueOf(rs.getString("repetition")));
                 rs.close();
                 stmt.close();
                 con.close();
@@ -240,8 +288,11 @@ public class DBConnection {
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             while (rs.next()) {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy: HH:mm");
+                cal.setTime(sdf.parse(rs.getString("date")));
                 Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
-                        rs.getString("description"), rs.getString("date"), Repetition.valueOf(rs.getString("repetition")));
+                        rs.getString("description"), cal, Repetition.valueOf(rs.getString("repetition")));
                 allReminders.add(reminder);
             }
             rs.close();
@@ -275,8 +326,29 @@ public class DBConnection {
             e.printStackTrace();
         }
     }
+    
+    public static void deleteTables() {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String clear = "DROP TABLE Users;";
+            Statement stmt = con.createStatement();
+            stmt.execute(clear);
+            clear = "DROP TABLE Reminders;";
+            stmt.execute(clear);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) {
         DBConnection.createTables();
+        DBConnection.printAll();
+        
     }
 }
