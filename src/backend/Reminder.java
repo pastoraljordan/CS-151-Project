@@ -6,16 +6,16 @@ import java.util.Calendar;
 public class Reminder {
 
     private String username;
-    private String name;
+    private String title;
     private String description;
-    private Calendar date;
+    private String date;
     private Repetition repetition;
 
     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MMM dd, yyyy: HH:mm");
 
-    public Reminder(String username, String name, String description, Calendar date, Repetition repetition) {
+    public Reminder(String username, String title, String description, String date, Repetition repetition) {
         this.username = username;
-        this.name = name;
+        this.title = title;
         this.description = description;
         this.date = date;
         this.repetition = repetition;
@@ -29,12 +29,12 @@ public class Reminder {
         this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
@@ -45,11 +45,11 @@ public class Reminder {
         this.description = description;
     }
 
-    public Calendar getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Calendar date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

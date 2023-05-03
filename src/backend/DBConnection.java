@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DBConnection {
@@ -50,13 +51,13 @@ public class DBConnection {
         }
     }
 
-    public static void createTable() {
+    public static void createTables() {
         clearConnections();
         try {
             con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
             String userTable = "CREATE TABLE Users ("
                     + "name varchar(255),"
-                    + "email varchar(255),"
+                    + "number varchar(255),"
                     + "username varchar(255),"
                     + "password varchar(255));";
             stmt = con.createStatement();
@@ -80,10 +81,10 @@ public class DBConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
-            String insert = "INSERT INTO Users(name, email, username, password) "
+            String insert = "INSERT INTO Users(name, number, username, password) "
                     + "VALUES ('"
                     + user.getName() + "', '"
-                    + user.getEmail() + "', '"
+                    + user.getNumber() + "', '"
                     + user.getUsername() + "', '"
                     + user.getPassword() + "');";
             stmt = con.createStatement();
@@ -105,7 +106,7 @@ public class DBConnection {
             String insert = "INSERT INTO Reminders(username, title, description, date, repetition) "
                     + "VALUES ('"
                     + reminder.getUsername() + "', '"
-                    + reminder.getName() + "', '"
+                    + reminder.getTitle() + "', '"
                     + reminder.getDescription() + "', '"
                     + reminder.getDate() + "', '"
                     + reminder.getRepetition() + "');";
@@ -178,7 +179,7 @@ public class DBConnection {
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             if (rs.next()) {
-                User user = new User(rs.getString("name"), rs.getString("email"),
+                User user = new User(rs.getString("name"), rs.getString("number"),
                         rs.getString("username"), rs.getString("password"));
                 rs.close();
                 stmt.close();
@@ -198,21 +199,18 @@ public class DBConnection {
         return null;
     }
 
-    public static Reminder getReminder(String username, String name) throws ParseException {
+    public static Reminder getReminder(String username, String title) throws ParseException {
         clearConnections();
         try {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
             String select = "SELECT * FROM Reminders WHERE (username = '" + username
-                    + "' AND title = '" + name + "');";
+                    + "' AND title = '" + title + "');";
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             if (rs.next()) {
-                Calendar date = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd yyyy HH:mm:ss");
-                date.setTime(sdf.parse(rs.getString("date")));
                 Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
-                        rs.getString("description"), date, Repetition.valueOf(rs.getString("repetition")));
+                        rs.getString("description"), rs.getString("date"), Repetition.valueOf(rs.getString("repetition")));
                 rs.close();
                 stmt.close();
                 con.close();
@@ -222,6 +220,34 @@ public class DBConnection {
             stmt.close();
             con.close();
             return null;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static ArrayList<Reminder> getAllReminders(String username) throws ParseException {
+        clearConnections();
+        ArrayList<Reminder> allReminders = new ArrayList<Reminder>();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String select = "SELECT * FROM Reminders WHERE (username = '" + username
+                    + "');";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(select);
+            while (rs.next()) {
+                Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
+                        rs.getString("description"), rs.getString("date"), Repetition.valueOf(rs.getString("repetition")));
+                allReminders.add(reminder);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            return allReminders;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -250,4 +276,7 @@ public class DBConnection {
         }
     }
 
+    public static void main(String[] args) {
+        DBConnection.createTables();
+    }
 }

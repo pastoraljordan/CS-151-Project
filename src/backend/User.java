@@ -6,48 +6,19 @@ import java.util.List;
 public class User {
 
     private String name;
-    private String email;
+    private String number;
     private String username;
     private String password;
     private List<Reminder> reminders;
 
-    public User(String name, String email, String username, String password) {
+    public User(String name, String number, String username, String password) {
         this.name = name;
-        this.email = email;
+        this.number = number;
         this.username = username;
         this.password = password;
         this.reminders = new ArrayList<>();
     }
 
-    // Can also just make multiple methods for forgot password instead of switch
-    public void forgotPassword() {
-
-        // Prompt to send text message or email
-        switch (verify) {
-            case phoneNum:
-                GmailTest.sendMessage("Sending old password", getPassword());
-                break;
-            case email:
-                GmailTest.sendEmail("Sending old password", getPassword());
-                break;
-            case newPass:
-                // Create new password and save it
-                break;
-            default:
-                break;
-        }
-
-        // Can send message to phone number or email to get old password, or can set new password
-        /*if(phone number choice) {
-		 * 	send text message with old password
-		 * }
-		 * else if(email choice) {
-		 * 	send email with old password
-		 * }
-		 * else
-		 * ask to enter a new password and set that as new password
-         */
-    }
 
     public String getName() {
         return name;
@@ -57,12 +28,12 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNumber() {
+        return number;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
     public String getUsername() {

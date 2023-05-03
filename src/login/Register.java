@@ -35,7 +35,7 @@ public class Register extends PanelCustom {
 
         loginTextField2.setForeground(new java.awt.Color(242, 242, 242));
         loginTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        loginTextField2.setHint("EMAIL");
+        loginTextField2.setHint("PHONE NUMBER (NO DASHES)");
 
         loginTextField3.setForeground(new java.awt.Color(242, 242, 242));
         loginTextField3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

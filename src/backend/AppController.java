@@ -8,7 +8,7 @@ public class AppController {
     private ArrayList<User> users;
     private User user;
 
-    public String registerUser(String number, Carrier carrier) throws Exception {
+    public String registerUser(String number) throws Exception {
 
         // SQLite
         // Temporary "account creation"
