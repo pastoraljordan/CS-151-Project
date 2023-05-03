@@ -9,10 +9,10 @@ public class Register extends PanelCustom {
 
     public Register() {
         initComponents();
-        name.setDocument(new TextFieldLimit(29));
+        name.setDocument(new TextFieldLimit(16));
         number.setDocument(new TextFieldLimit(10));
-        username.setDocument(new TextFieldLimit(29));
-        password.setDocument(new TextFieldLimit(29));
+        username.setDocument(new TextFieldLimit(16));
+        password.setDocument(new TextFieldLimit(16));
     }
 
     @SuppressWarnings("unchecked")
