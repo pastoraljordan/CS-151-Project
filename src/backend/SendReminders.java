@@ -6,8 +6,8 @@ import com.twilio.rest.api.v2010.account.ValidationRequest;
  
 public class SendReminders { 
     // Find your Account Sid and Token at twilio.com/console 
-    public static final String ACCOUNT_SID = "ACbe58ae439a79a2c84d420f319958949c"; 
-    public static final String AUTH_TOKEN = ""; 
+    private static final String ACCOUNT_SID = "ACbe58ae439a79a2c84d420f319958949c"; 
+    private static final String AUTH_TOKEN = ""; 
     
     public static void sendMessage(String number, String title, String desc) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN); 

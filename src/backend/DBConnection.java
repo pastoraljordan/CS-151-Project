@@ -499,7 +499,7 @@ public class DBConnection {
     public static void main(String[] args) {
         DBConnection.createUsers();
         DBConnection.createReminders();
-        DBConnection.clearReminders();
+        DBConnection.clear();
         DBConnection.printAll();
     }
 }

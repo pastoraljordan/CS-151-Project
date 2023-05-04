@@ -1,10 +1,8 @@
 package backend;
 
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Reminder {
 
@@ -86,16 +84,5 @@ public class Reminder {
 
     public void setRepetition(Repetition repetition) {
         this.repetition = repetition;
-    }
-
-    public static void main(String[] args) throws ParseException{
-        DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy HH:mm");
-        Calendar cal = Calendar.getInstance();
-        Date date = dateFormat.parse("jul 09, 2002 10:10");
-        cal.setTime(date);
-        Date date1 = cal.getTime();
-        
-        Reminder test = new Reminder("username", "title", "description", cal, Repetition.hourly);
-        System.out.println(dateFormat.format(date1));
     }
 }

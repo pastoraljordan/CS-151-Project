@@ -52,12 +52,4 @@ public class TextHandler {
                 System.out.println("not after current time");
         }
     }
-
-    public static void main(String[] args) throws ParseException {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
-        cal.setTime(sdf.parse("May 03, 2023 03:12 AM"));
-        Reminder reminder = new Reminder("username", "Take out the trash", "Put it outside apartment", cal, once);
-        TextHandler test = new TextHandler(reminder);
-    }
 }
