@@ -33,7 +33,7 @@ The Task Reminder app is very simple, it shows you visually what reminders you h
 | UML Diagram   | Summary Description|
 | ------------- | ------------- |
 | [Class Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/TaskReminder%20Class%20Diagram.png)              | The Class Diagram shows all of the information that the code will be using. It includes classes, variables, methods, and the relationships between all of them.    |
-| [State Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/State.png)              | The State Diagram displays the conditions, events, and actions Task Reminder would have. It shows when a program is running and what happens when the program is not running. It also shows what happens when an error occurs. Shows when you enter the Task Reminder Interface's start and end.                                  |
+| [State Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Task%20Reminder%20State%20Diagram.png)              | The State Diagram displays the conditions, events, and actions Task Reminder would have. It shows when a program is running and what happens when the program is not running.         |
 | [Use Case Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Use_Case.png)        | The Use Case Diagram displays the various interactions the user may encounter with Task Reminder. The main interactions are Homepage, User Functions, Edit Reminders, Exit, and Registration Page. Each of ther main interactions have sub-interactions such as Homepage having a Login and Register function.                 |
 | [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | The Sequence Diagram shows how the different classes interact with each other and show what happens in those scenarios.        |
 
@@ -56,6 +56,7 @@ The way we've solved the problem of reminding yourself is by using a device that
 Clone this repo into your preferred IDE. Will need authentication token from me and copy paste it into the AUTH_TOKEN string in the SendReminders.java file as I was unable to figure out how to keep this information private. After that, run the LoginMain.java file.
 
 #### Snapshots of the Running Program:
+(just shows basic screens)
 <img width="832" alt="TaskReminderRegister Empty" src="https://user-images.githubusercontent.com/99649511/236269422-995af439-a44c-4f96-8e43-6322c648bda3.png">
 <img width="832" alt="TaskReminder Login Empty" src="https://user-images.githubusercontent.com/99649511/236269530-03fadad5-c3ba-48f9-aaba-46a951b63f57.png">
 <img width="832" alt="Task Reminder trying to sign in with invalid information" src="https://user-images.githubusercontent.com/99649511/236269610-382fe4f3-7c52-4ad0-b466-7118cc928889.png">
