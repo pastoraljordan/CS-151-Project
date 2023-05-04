@@ -55,4 +55,12 @@ The way we've solved the problem of reminding yourself is by using a device that
 #### Steps to run the project:
 Clone this repo into your preferred IDE. Will need authentication token from me and copy paste it into the AUTH_TOKEN string in the SendReminders.java file as I was unable to figure out how to keep this information private. After that, run the LoginMain.java file.
 
-#### Snapshots of the Running Program
+#### Snapshots of the Running Program:
+<img width="832" alt="TaskReminderRegister Empty" src="https://user-images.githubusercontent.com/99649511/236269422-995af439-a44c-4f96-8e43-6322c648bda3.png">
+<img width="832" alt="TaskReminder Login Empty" src="https://user-images.githubusercontent.com/99649511/236269530-03fadad5-c3ba-48f9-aaba-46a951b63f57.png">
+<img width="832" alt="Task Reminder trying to sign in with invalid information" src="https://user-images.githubusercontent.com/99649511/236269610-382fe4f3-7c52-4ad0-b466-7118cc928889.png">
+<img width="832" alt="Task Reminder creating new account" src="https://user-images.githubusercontent.com/99649511/236269656-d77996b5-01b0-476e-96c0-c5ae490c837d.png">
+<img width="834" alt="Task Reminder Dashboard" src="https://user-images.githubusercontent.com/99649511/236269742-da391c5c-cdb0-442b-87c9-ec959e012e72.png">
+<img width="834" alt="Task Reminder all reminders" src="https://user-images.githubusercontent.com/99649511/236269787-414d0208-60a4-42eb-84a6-27e8ddc7b397.png">
+<img width="834" alt="Task Reminder Create Reminder" src="https://user-images.githubusercontent.com/99649511/236269806-aae95000-a032-46f9-a9c4-f8d33adaecdf.png">
+<img width="834" alt="Task Reminder Settings" src="https://user-images.githubusercontent.com/99649511/236269830-ece20e7d-e75b-4beb-89d1-1b3086bc418b.png">
