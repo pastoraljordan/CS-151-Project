@@ -1,6 +1,7 @@
 package main;
 
 import backend.CurrentUser;
+import backend.DBConnection;
 import swing.EventLogin;
 
 public class LoginMain extends javax.swing.JFrame {
@@ -9,6 +10,8 @@ public class LoginMain extends javax.swing.JFrame {
         initComponents();
         CurrentUser current = CurrentUser.currentUser;
         current.setCurrentUser(null);
+        DBConnection.createUsers();
+        DBConnection.createReminders();
         EventLogin event = new EventLogin() {
             @Override
             public void loginDone() {

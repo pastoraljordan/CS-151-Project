@@ -501,8 +501,5 @@ public class DBConnection {
         DBConnection.createReminders();
         DBConnection.clearReminders();
         DBConnection.printAll();
-        DBConnection.changeName("jordanp", "Jordan Pastoral");
-        DBConnection.changeUsername("jordanp", "jordan p");
-        DBConnection.printAll();
     }
 }
