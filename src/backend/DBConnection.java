@@ -294,6 +294,57 @@ public class DBConnection {
         }
         return null;
     }
+    
+    public static void changeName(String username, String newName) {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String update = "UPDATE Users SET name = '" + newName + "' WHERE username = '"  + username + "';";
+            stmt = con.createStatement();
+            stmt.execute(update);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void changeUsername(String username, String newUser) {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String update = "UPDATE Users SET username = '" + newUser + "' WHERE username = '"  + username + "';";
+            stmt = con.createStatement();
+            stmt.execute(update);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void changePassword(String username, String newPass) {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String update = "UPDATE Users SET password = '" + newPass + "' WHERE username = '"  + username + "';";
+            stmt = con.createStatement();
+            stmt.execute(update);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static Reminder getReminder(String username, String title) throws ParseException {
         clearConnections();

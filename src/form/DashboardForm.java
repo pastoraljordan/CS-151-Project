@@ -15,7 +15,7 @@ public class DashboardForm extends javax.swing.JPanel {
 
     CurrentUser current = CurrentUser.currentUser;
     User user = current.getCurrentUser();
-    
+
     public DashboardForm() {
         initComponents();
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
@@ -27,23 +27,47 @@ public class DashboardForm extends javax.swing.JPanel {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
             ArrayList<Reminder> reminders = DBConnection.getTodaysReminders(user.getUsername());
-            String date1 = sdf.format(reminders.get(0).getDate().getTime());
-            Repetition r1 = reminders.get(0).getRepetition();
-            String date2 = sdf.format(reminders.get(1).getDate().getTime());
-            Repetition r2 = reminders.get(1).getRepetition();
-            String date3 = sdf.format(reminders.get(2).getDate().getTime());
-            Repetition r3 = reminders.get(2).getRepetition();
-            card1.setData(new Model_Card(reminders.get(0).getTitle(), date1, r1.toString()));
-            card2.setData(new Model_Card(reminders.get(1).getTitle(), date2, r2.toString()));
-            card3.setData(new Model_Card(reminders.get(2).getTitle(), date3, r3.toString()));
-            for(int i = 3; i < reminders.size(); i++) {
+            if (reminders.isEmpty()) {
+                card1.setData(new Model_Card("", "", ""));
+                card2.setData(new Model_Card("You have", "no reminders", "for today!"));
+                card3.setData(new Model_Card("", "", ""));
+                return;
+            }
+            if (reminders.size() == 1) {
+                String date1 = sdf.format(reminders.get(0).getDate().getTime());
+                Repetition r1 = reminders.get(0).getRepetition();
+                card1.setData(new Model_Card("", "", ""));
+                card2.setData(new Model_Card(reminders.get(0).getTitle(), date1, r1.toString()));
+                card3.setData(new Model_Card("", "", ""));
+            }
+            if (reminders.size() == 2) {
+                String date1 = sdf.format(reminders.get(0).getDate().getTime());
+                Repetition r1 = reminders.get(0).getRepetition();
+                card1.setData(new Model_Card(reminders.get(0).getTitle(), date1, r1.toString()));
+                String date2 = sdf.format(reminders.get(1).getDate().getTime());
+                Repetition r2 = reminders.get(1).getRepetition();
+                card3.setData(new Model_Card(reminders.get(1).getTitle(), date2, r2.toString()));
+                card2.setData(new Model_Card("", "", ""));
+            }
+            if (reminders.size() >= 3) {
+                String date1 = sdf.format(reminders.get(0).getDate().getTime());
+                Repetition r1 = reminders.get(0).getRepetition();
+                card1.setData(new Model_Card(reminders.get(0).getTitle(), date1, r1.toString()));
+                String date2 = sdf.format(reminders.get(1).getDate().getTime());
+                Repetition r2 = reminders.get(1).getRepetition();
+                card2.setData(new Model_Card(reminders.get(1).getTitle(), date2, r2.toString()));
+                String date3 = sdf.format(reminders.get(2).getDate().getTime());
+                Repetition r3 = reminders.get(2).getRepetition();
+                card3.setData(new Model_Card(reminders.get(2).getTitle(), date3, r3.toString()));
+            }
+            for (int i = 0; i < reminders.size(); i++) {
                 dashboardTable.addRow(reminders.get(i).getValues());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
