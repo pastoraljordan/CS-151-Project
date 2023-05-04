@@ -1,5 +1,6 @@
 package login;
 
+import backend.CurrentUser;
 import backend.DBConnection;
 import java.awt.Color;
 import swing.EventLogin;
@@ -100,6 +101,8 @@ public class Login extends PanelCustom {
                 break;
             case 2:
                 if(getAlpha() == 0) {
+                    CurrentUser current = CurrentUser.currentUser;
+                    current.setCurrentUser(DBConnection.getUser(username.getText()));
                     event.loginDone();
                 }
                 break;

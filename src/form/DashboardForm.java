@@ -14,7 +14,7 @@ public class DashboardForm extends javax.swing.JPanel {
     }
 
     private void insertData() {
-        // Go through SQL Table and loop through the Reminders that match the user and todays date
+        // For three cards on top, get the top three reminders and input information into each card
         card1.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
         card2.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
         card3.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
