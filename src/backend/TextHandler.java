@@ -3,6 +3,8 @@ package backend;
 import static backend.Repetition.once;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -10,13 +12,11 @@ import java.util.TimerTask;
 public class TextHandler {
 
     private Timer timer;
-    private Reminder reminder;
     private TimerTask task;
     private CurrentUser current = CurrentUser.currentUser;
     private User user = current.getCurrentUser();
 
     public TextHandler(Reminder reminder) {
-        this.reminder = reminder;
         timer = new Timer();
         task = new TimerTask() {
             @Override
@@ -27,9 +27,14 @@ public class TextHandler {
             }
         };
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
         Calendar date = reminder.getDate();
         Repetition repeat = reminder.getRepetition();
+        LocalDate now = LocalDate.now();
+        LocalDate reminderDate = LocalDate.ofInstant(date.toInstant(), ZoneId.systemDefault());
+        System.out.println(reminderDate);
+        if(now.isAfter(reminderDate)) {
+            repeat = Repetition.other;
+        }
         switch (repeat) {
             case once:
                 timer.schedule(task, date.getTime());
@@ -44,15 +49,14 @@ public class TextHandler {
                 timer.scheduleAtFixedRate(task, date.getTime(), 604800000);
                 break;
             default:
-                timer.schedule(task, date.getTime());
-                break;
+                System.out.println("not after current time");
         }
     }
 
     public static void main(String[] args) throws ParseException {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
-        cal.setTime(sdf.parse("May 04, 2023 03:12 AM"));
+        cal.setTime(sdf.parse("May 03, 2023 03:12 AM"));
         Reminder reminder = new Reminder("username", "Take out the trash", "Put it outside apartment", cal, once);
         TextHandler test = new TextHandler(reminder);
     }
