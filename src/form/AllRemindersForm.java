@@ -7,8 +7,6 @@ import backend.User;
 import java.awt.Color;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import swing.ScrollBar;
 
 public class AllRemindersForm extends javax.swing.JPanel {

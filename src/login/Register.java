@@ -50,7 +50,7 @@ public class Register extends PanelCustom {
 
         number.setForeground(new java.awt.Color(242, 242, 242));
         number.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        number.setHint("PHONE NUMBER (NO DASHES)");
+        number.setHint("PHONE NUMBER");
 
         username.setForeground(new java.awt.Color(242, 242, 242));
         username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N

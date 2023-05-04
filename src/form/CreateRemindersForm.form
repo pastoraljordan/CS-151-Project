@@ -230,10 +230,11 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="hourly"/>
-            <StringItem index="1" value="daily"/>
-            <StringItem index="2" value="weekly"/>
+          <StringArray count="4">
+            <StringItem index="0" value="once"/>
+            <StringItem index="1" value="hourly"/>
+            <StringItem index="2" value="daily"/>
+            <StringItem index="3" value="weekly"/>
           </StringArray>
         </Property>
       </Properties>

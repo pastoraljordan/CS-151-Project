@@ -1,30 +1,31 @@
 package main;
 
-import backend.CurrentUser;
 import event.EventMenu;
 import form.AllRemindersForm;
 import form.CreateRemindersForm;
 import form.DashboardForm;
-import form.LogOutForm;
 import form.SettingsForm;
 import java.awt.Color;
 import java.awt.Component;
+import swing.EventLogin;
 
 public class DashboardMain extends javax.swing.JFrame {
-    
+
+    private EventLogin event;
+
     public DashboardMain() {
         initComponents();
         setBackground(new Color(0, 0, 0, 0));
         showForm(new DashboardForm());
     }
-    
+
     private void showForm(Component com) {
         body.removeAll();
         body.add(com);
         body.repaint();
         body.revalidate();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,21 +83,44 @@ public class DashboardMain extends javax.swing.JFrame {
         dashboardMenu1.addEvent(new EventMenu() {
             @Override
             public void menuIndexChange(int index) {
-                if(index == 0) {
-                    showForm(new DashboardForm());
-                }else if(index == 1) {
-                    showForm(new AllRemindersForm());
-                }
-                else if(index == 2) {
-                    showForm(new CreateRemindersForm());
-                } else if(index == 3) {
-                    showForm(new SettingsForm());
-                } else if(index == 10) {
-                    showForm(new LogOutForm());
+                switch (index) {
+                    case 0:
+                        showForm(new DashboardForm());
+                        break;
+                    case 1:
+                        showForm(new AllRemindersForm());
+                        break;
+                    case 2:
+                        showForm(new CreateRemindersForm());
+                        break;
+                    case 3:
+                        showForm(new SettingsForm());
+                        break;
+                    case 10:
+                        EventLogin event = new EventLogin() {
+                            @Override
+                            public void loginDone() {
+                            }
+
+                            @Override
+                            public void logOut() {
+                                DashboardMain.this.dispose();
+                                LoginMain login = new LoginMain();
+                                login.setVisible(true);
+                            }
+                        };
+                        event.logOut();
+                        break;
+                    default:
+                        break;
                 }
             }
         });
     }//GEN-LAST:event_formWindowOpened
+
+    public void setEventLogin(EventLogin event) {
+        this.event = event;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

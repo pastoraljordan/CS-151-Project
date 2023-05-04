@@ -24,10 +24,6 @@ public class LoginMain extends javax.swing.JFrame {
 
             @Override
             public void logOut() {
-                main.removeAll();
-                main.add(loginAndRegister1);
-                main.revalidate();
-                main.repaint();
             }
         };
         loginAndRegister1.setEventLogin(event);

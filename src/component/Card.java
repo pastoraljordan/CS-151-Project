@@ -52,7 +52,7 @@ public class Card extends PanelShadow {
                     .addComponent(lbName)
                     .addComponent(lbDate)
                     .addComponent(lbTime))
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

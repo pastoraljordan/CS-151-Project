@@ -1,16 +1,17 @@
 package backend;
 
+import static backend.Repetition.once;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EmailHandler {
+public class TextHandler {
 
     private Timer timer;
     private Reminder reminder;
     private TimerTask task;
 
-    public EmailHandler(Reminder reminder) {
+    public TextHandler(Reminder reminder) {
         this.reminder = reminder;
         timer = new Timer();
         task = new TimerTask() {
@@ -31,6 +32,9 @@ public class EmailHandler {
 		Calendar date = reminder.getDate();
         Repetition repeat = reminder.getRepetition();
         switch (repeat) {
+            case once:
+                timer.schedule(task, date.getTime());
+                break;
             case hourly:
                 timer.scheduleAtFixedRate(task, date.getTime(), 3600000);
                 break;
@@ -42,6 +46,7 @@ public class EmailHandler {
                 break;
             default:
                 timer.schedule(task, date.getTime());
+                
         }
     }
 }

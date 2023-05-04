@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -333,6 +335,38 @@ public class DBConnection {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
             String select = "SELECT * FROM Reminders WHERE username = '" + username + "' ORDER BY date ASC;";
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(select);
+            while (rs.next()) {
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
+                cal.setTime(sdf.parse(rs.getString("date")));
+                Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
+                        rs.getString("description"), cal, Repetition.valueOf(rs.getString("repetition")));
+                allReminders.add(reminder);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+            return allReminders;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static ArrayList<Reminder> getTodaysReminders(String username) throws ParseException {
+        clearConnections();
+        ArrayList<Reminder> allReminders = new ArrayList<Reminder>();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String select = "SELECT * FROM Reminders WHERE username = '" + username
+                    + "' AND date LIKE '%" + dtf.format(LocalDate.now()) + "%' ORDER BY date ASC;";
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             while (rs.next()) {

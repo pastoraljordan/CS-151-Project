@@ -1,5 +1,5 @@
 package backend;
 
 public enum Repetition {
-    hourly, daily, weekly
+    once, hourly, daily, weekly
 }

@@ -3,8 +3,10 @@ package form;
 import backend.CurrentUser;
 import backend.DBConnection;
 import backend.Reminder;
+import backend.Repetition;
 import backend.User;
 import java.awt.Color;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import model.Model_Card;
 import swing.ScrollBar;
@@ -22,24 +24,24 @@ public class DashboardForm extends javax.swing.JPanel {
     }
 
     private void insertData() {
-        // For three cards on top, get the top three reminders and input information into each card
-        card1.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
-        card2.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
-        card3.setData(new Model_Card("Test Name", "Test Date", "Test Time"));
-        dashboardTable.addRow(new Object[]{"Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
+            ArrayList<Reminder> reminders = DBConnection.getTodaysReminders(user.getUsername());
+            String date1 = sdf.format(reminders.get(0).getDate().getTime());
+            Repetition r1 = reminders.get(0).getRepetition();
+            String date2 = sdf.format(reminders.get(1).getDate().getTime());
+            Repetition r2 = reminders.get(1).getRepetition();
+            String date3 = sdf.format(reminders.get(2).getDate().getTime());
+            Repetition r3 = reminders.get(2).getRepetition();
+            card1.setData(new Model_Card(reminders.get(0).getTitle(), date1, r1.toString()));
+            card2.setData(new Model_Card(reminders.get(1).getTitle(), date2, r2.toString()));
+            card3.setData(new Model_Card(reminders.get(2).getTitle(), date3, r3.toString()));
+            for(int i = 3; i < reminders.size(); i++) {
+                dashboardTable.addRow(reminders.get(i).getValues());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
     
     @SuppressWarnings("unchecked")

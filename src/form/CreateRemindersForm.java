@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import swing.TextFieldLimit;
 
 public class CreateRemindersForm extends javax.swing.JPanel {
 
@@ -20,6 +21,8 @@ public class CreateRemindersForm extends javax.swing.JPanel {
     public CreateRemindersForm() {
         initComponents();
         time.setEditable(false);
+        name.setDocument(new TextFieldLimit(20));
+        description.setDocument(new TextFieldLimit(40));
         timePicker1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -106,7 +109,7 @@ public class CreateRemindersForm extends javax.swing.JPanel {
 
         jComboBox1.setBackground(new java.awt.Color(51, 51, 51));
         jComboBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "hourly", "daily", "weekly" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "once", "hourly", "daily", "weekly" }));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(140, 110, 207));
