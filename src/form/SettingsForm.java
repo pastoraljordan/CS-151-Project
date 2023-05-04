@@ -158,8 +158,8 @@ public class SettingsForm extends javax.swing.JPanel {
             case 0:
                 jLabel2.setForeground(new Color(172, 209, 175));
                 jLabel2.setText("Name changed successfully!");
-                user.setName(name.getText());
                 DBConnection.changeName(user.getUsername(), name.getText());
+                user.setName(name.getText());
                 break;
             case 1:
                 jLabel2.setForeground(new Color(244, 113, 116));
@@ -194,8 +194,8 @@ public class SettingsForm extends javax.swing.JPanel {
             case 0:
                 jLabel3.setForeground(new Color(172, 209, 175));
                 jLabel3.setText("Username changed successfully!");
-                user.setUsername(username.getText());
                 DBConnection.changeUsername(user.getUsername(), username.getText());
+                user.setUsername(username.getText());
                 break;
             case 1:
                 jLabel3.setForeground(new Color(244, 113, 116));
@@ -233,8 +233,8 @@ public class SettingsForm extends javax.swing.JPanel {
             case 0:
                 jLabel4.setForeground(new Color(172, 209, 175));
                 jLabel4.setText("Password changed successfully!");
-                user.setPassword(newPass.getText());
                 DBConnection.changePassword(user.getUsername(), newPass.getText());
+                user.setPassword(newPass.getText());
                 break;
             case 1:
                 jLabel4.setForeground(new Color(244, 113, 116));

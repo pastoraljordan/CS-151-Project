@@ -1,5 +1,10 @@
 package main;
 
+import backend.CurrentUser;
+import backend.DBConnection;
+import backend.Reminder;
+import backend.TextHandler;
+import backend.User;
 import event.EventMenu;
 import form.AllRemindersForm;
 import form.CreateRemindersForm;
@@ -7,16 +12,35 @@ import form.DashboardForm;
 import form.SettingsForm;
 import java.awt.Color;
 import java.awt.Component;
+import java.text.ParseException;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import swing.EventLogin;
 
 public class DashboardMain extends javax.swing.JFrame {
 
     private EventLogin event;
+    private CurrentUser current = CurrentUser.currentUser;
+    private User user = current.getCurrentUser();
+    private ArrayList<Reminder> reminders;
 
     public DashboardMain() {
         initComponents();
+        initReminders();
         setBackground(new Color(0, 0, 0, 0));
         showForm(new DashboardForm());
+    }
+    
+    private void initReminders() {
+        try {
+            reminders = DBConnection.getTodaysReminders(user.getUsername());
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm");
+            for(Reminder r : reminders) {
+                TextHandler handler = new TextHandler(r);
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private void showForm(Component com) {

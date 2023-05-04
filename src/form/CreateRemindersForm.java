@@ -3,6 +3,7 @@ package form;
 import backend.CurrentUser;
 import backend.DBConnection;
 import backend.Reminder;
+import backend.TextHandler;
 import backend.User;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -193,12 +194,13 @@ public class CreateRemindersForm extends javax.swing.JPanel {
                 jLabel7.setText("Please rename your reminder! This name already exists");
                 break;
             case 2:
-                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy");
                 Date date = jDateChooser1.getCalendar().getTime();
                 String dateStr = sdf.format(date);
                 String str = dateStr + " " + timePicker1.getSelectedTime();
                 System.out.println(str);
                 Calendar cal = Calendar.getInstance();
+                sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
                 try {
                     cal.setTime(sdf.parse(str));
                 } catch (ParseException ex) {
@@ -209,6 +211,7 @@ public class CreateRemindersForm extends javax.swing.JPanel {
                 DBConnection.addReminder(reminder);
                 jLabel7.setForeground(new Color(172, 209, 175));
                 jLabel7.setText("Reminder creation successful!");
+                TextHandler text = new TextHandler(reminder);
                 break;
         }
     }//GEN-LAST:event_button1ActionPerformed

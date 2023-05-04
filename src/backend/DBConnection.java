@@ -459,6 +459,23 @@ public class DBConnection {
             e.printStackTrace();
         }
     }
+    
+    public static void clearReminders() {
+        clearConnections();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
+            String clear = "DELETE FROM Reminders;";
+            Statement stmt = con.createStatement();
+            stmt.execute(clear);
+            stmt.close();
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void deleteTables() {
         clearConnections();
@@ -482,6 +499,10 @@ public class DBConnection {
     public static void main(String[] args) {
         DBConnection.createUsers();
         DBConnection.createReminders();
+        DBConnection.clearReminders();
+        DBConnection.printAll();
+        DBConnection.changeName("jordanp", "Jordan Pastoral");
+        DBConnection.changeUsername("jordanp", "jordan p");
         DBConnection.printAll();
     }
 }
