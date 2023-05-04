@@ -1,11 +1,19 @@
 package form;
 
+import backend.CurrentUser;
+import backend.DBConnection;
+import backend.Reminder;
+import backend.User;
 import java.awt.Color;
+import java.util.ArrayList;
 import model.Model_Card;
 import swing.ScrollBar;
 
 public class DashboardForm extends javax.swing.JPanel {
 
+    CurrentUser current = CurrentUser.currentUser;
+    User user = current.getCurrentUser();
+    
     public DashboardForm() {
         initComponents();
         jScrollPane1.setVerticalScrollBar(new ScrollBar());

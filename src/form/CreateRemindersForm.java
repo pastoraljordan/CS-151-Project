@@ -14,6 +14,9 @@ import java.util.Date;
 
 public class CreateRemindersForm extends javax.swing.JPanel {
 
+    CurrentUser current = CurrentUser.currentUser;
+    User user = current.getCurrentUser();
+    
     public CreateRemindersForm() {
         initComponents();
         time.setEditable(false);
@@ -188,8 +191,6 @@ public class CreateRemindersForm extends javax.swing.JPanel {
                 break;
             case 2:
                 SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
-                CurrentUser current = CurrentUser.currentUser;
-                User user = current.getCurrentUser();
                 Date date = jDateChooser1.getCalendar().getTime();
                 String dateStr = sdf.format(date);
                 String str = dateStr + " " + timePicker1.getSelectedTime();

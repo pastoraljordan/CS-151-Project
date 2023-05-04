@@ -1,11 +1,21 @@
 package form;
 
+import backend.CurrentUser;
+import backend.DBConnection;
+import backend.Reminder;
+import backend.User;
 import java.awt.Color;
-import model.Model_Card;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import swing.ScrollBar;
 
 public class AllRemindersForm extends javax.swing.JPanel {
 
+    CurrentUser current = CurrentUser.currentUser;
+    User user = current.getCurrentUser();
+    
     public AllRemindersForm() {
         initComponents();
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
@@ -14,21 +24,14 @@ public class AllRemindersForm extends javax.swing.JPanel {
     }
     
     private void insertData() {
-        // Go through SQL Table and loop through the result set to create each entry
-        dashboardTable.addRow(new Object[]{"Mike Bhand", "mikebhand@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Andrew Strauss", "andrewstrauss@gmail.com", "Editor", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Ross Kopelman", "rosskopelman@gmail.com", "Subscriber", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Mike Hussy", "mikehussy@gmail.com", "Admin", "25 Apr,2018"});
-        dashboardTable.addRow(new Object[]{"Kevin Pietersen", "kevinpietersen@gmail.com", "Admin", "25 Apr,2018"});
+        try {
+            ArrayList<Reminder> reminders = DBConnection.getAllReminders(user.getUsername());
+            for(Reminder r : reminders) {
+                dashboardTable.addRow(r.getValues());
+            }
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -54,7 +57,7 @@ public class AllRemindersForm extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Reminder", "Description", "Date", "Time"
+                "Reminder", "Description", "Date", "Repetition"
             }
         ) {
             boolean[] canEdit = new boolean [] {

@@ -304,7 +304,7 @@ public class DBConnection {
             rs = stmt.executeQuery(select);
             if (rs.next()) {
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy: HH:mm aa");
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
                 cal.setTime(sdf.parse(rs.getString("date")));
                 Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
                         rs.getString("description"), cal, Repetition.valueOf(rs.getString("repetition")));
@@ -332,13 +332,12 @@ public class DBConnection {
         try {
             Class.forName("org.sqlite.JDBC");
             con = DriverManager.getConnection("jdbc:sqlite:TaskReminder.db");
-            String select = "SELECT * FROM Reminders WHERE (username = '" + username
-                    + "');";
+            String select = "SELECT * FROM Reminders WHERE username = '" + username + "' ORDER BY date ASC;";
             stmt = con.createStatement();
             rs = stmt.executeQuery(select);
             while (rs.next()) {
                 Calendar cal = Calendar.getInstance();
-                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy: HH:mm aa");
+                SimpleDateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
                 cal.setTime(sdf.parse(rs.getString("date")));
                 Reminder reminder = new Reminder(rs.getString("username"), rs.getString("title"),
                         rs.getString("description"), cal, Repetition.valueOf(rs.getString("repetition")));

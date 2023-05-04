@@ -36,6 +36,17 @@ public class Reminder {
         String str = username + " " + title + " " + description + " " + sdf.format(date.getTime()) + " " + repetition;
         System.out.println(str);
     }
+    
+    public Object[] getValues() {
+        Object[] values = new Object[4];
+        values[0] = title;
+        values[1] = description;
+        DateFormat sdf = new SimpleDateFormat("MMM dd, yyyy HH:mm aa");
+        String date = sdf.format(this.date.getTime());
+        values[2] = date;
+        values[3] = repetition;
+        return values;
+    }
 
     public String getUsername() {
         return username;
