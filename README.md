@@ -35,7 +35,7 @@ The Task Reminder app is very simple, it shows you visually what reminders you h
 | [Class Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/TaskReminder%20Class%20Diagram.png)              | The Class Diagram shows all of the information that the code will be using. It includes classes, variables, methods, and the relationships between all of them.    |
 | [State Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Task%20Reminder%20State%20Diagram.png)              | The State Diagram displays the conditions, events, and actions Task Reminder would have. It shows when a program is running and what happens when the program is not running.         |
 | [Use Case Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Task%20Reminder%20Use%20Case%20Diagram.png)        | The Use Case Diagram displays the various interactions the user may encounter with Task Reminder.                 |
-| [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Sequence.png)        | The Sequence Diagram shows how the different classes interact with each other and show what happens in those scenarios.        |
+| [Sequence Diagram](https://github.com/pastoraljordan/CS-151-Task-Reminder/blob/main/diagrams/Task%20Reminder%20Sequence%20Diagram.png)        | The Sequence Diagram shows how the different classes interact with each other and show what happens in those scenarios.        |
 
 
 #### Operations: 
